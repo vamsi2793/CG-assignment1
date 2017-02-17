@@ -1,0 +1,115 @@
+
+<!-- saved from url=(0064)ftp://www.cs.uregina.ca/pub/class/315/WWW/Lab1/GLUT/windows.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+      <title>GLUT for Windows</title>
+   </head>
+
+   <body>
+      <h2>GLUT for Windows</h2>
+
+      <p>GLUT comes in two flavours for Windows. There's an old and unmaintained
+      version called GLUT and an open source alternative called freeglut. The
+      textbook examples rely on freeglut, so I suggest you install that one. You may
+      find code that relies on GLUT that doesn't work with freeglut. The two
+      libraries can coexist on one PC. Follow the <b>Optional</b> installation
+      instructions to install it.</p>
+
+
+      <h3>Installing freeglut</h3>
+      <ol>
+         <li> Get the freeglut 2.8.1 MSVC zip file from <a href="http://www.transmissionzero.co.uk/software/freeglut-devel/">http://www.transmissionzero.co.uk/software/freeglut-devel/</a>
+         </li><li> Extract the files to your PC.
+         </li><li> There are three types of files of importance: lib (in the lib folder), header (in the include\GL folder), and dll (in the bin folder).
+         </li><li> If you are using 32-bit Windows with Visual Studio 2013, the following are the easiest places to put each of these files:
+         <ul>  
+            <li> <b>lib files</b>: C:\Program Files\Microsoft Visual Studio 12.0\VC\lib 
+            </li><li> <b>Header files</b>: C:\Program Files\Microsoft Visual Studio 12.0\VC\include\gl
+            </li><li> <b>dll files</b>: C:\WINDOWS\System32
+         </li></ul>
+         </li><li> If you are using 64-bit Windows 7 or Windows 8 with Visual Studio 2013 do the following:</li>
+         <ul> 
+            <li> <b>Header files</b>: C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\include\gl
+            </li><li> <b>32-bit lib files</b>: C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\lib
+            </li><li> <b>32-bit dll files</b>: C:\WINDOWS\SysWOW64
+            </li><li> <b>64-bit lib files</b>: C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\lib\amd64
+            </li><li> <b>64-bit dll files</b>: C:\WINDOWS\System32
+         </li></ul>
+      </ol>
+
+      <h3>Install GLEW</h3>
+      The textbook samples rely on GLEW to get extra OpenGL functionality. You should install it now.
+      <ul>
+
+         <li>Download GLEW (32-bit and 64-bit versions are separated): <a href="https://sourceforge.net/projects/glew/files/glew/1.9.0/">
+            https://sourceforge.net/projects/glew/files/glew/1.9.0/</a></li>
+         <li>Find the headers, glew32.lib and glew32.dll files and install them to the same locations you used for freeglut.
+      </li></ul>
+
+      <h3>Set up a freeglut program</h3>
+      <ul>
+         <li>Start Visual Studio 2012</li>
+         <li>Select <b>File-&gt;New-&gt;Project</b><br>
+         A "New Project" Dialogue box will appear.</li>
+         <li>Click the <b>Visual C++ Projects</b> Folder and select the <b>Win32 Console Application</b> template.</li>
+         <li>Choose a "Name:" and a "Location:".</li>
+         <li>Uncheck "Create directory for solution"</li>
+         <li>Click "OK"</li>
+         <li>In the <b>Win32 Application Wizard</b>, Select <b>Application Settings</b>, check the <b>Empty project</b> box, then click <b>Finish</b>.
+         </li><li>A new project has now been created.  Now, we will add the main program...</li>
+
+         <li><b>Adding new files:</b> 
+         <ul>
+            <li>From the main menu, select <b>Project-&gt;Add New Item...</b> <br>
+            An "Add New Item" Dialogue box will appear.</li>
+            <li>Select <b>C++ File(.cpp)</b> and call this file main.cpp.</li>
+            <li>In the editor window, type your program or copy and paste in the code.</li>
+         </ul>
+
+         </li><li><b>Inserting existing files:</b> 
+         <ul>
+         <li>Download the desired files</li> 
+         <li>Put them in the project folder next to the file with the .vcproj extension.</li>
+         <li>Add the files to your project: from the Visual Studio menu, select <b>Project-&gt;Add Existing Item...</b><br>A dialog will appear that should list the files you put in the project folder. Select them and add them.</li>
+      <li>For example:</li>
+      <ul>
+
+         <li>Download <a href="ftp://www.cs.uregina.ca/pub/class/315/WWW/Lab1/GLUT/Angel.zip">Angel.zip</a> and add all the files
+         inside to your project.<br>All of Dr. Angel's code relies on a set
+         of utility files that he wrote.  I have collected the files in a .zip
+         file for your convenience. </li>
+
+         <li>Add your OpenGL code and shaders. For example, download these sample files from the textbook add them to your project:</li>
+         <ul>
+            <li><a href="ftp://www.cs.uregina.ca/pub/class/315/WWW/Lab1/GLUT/example1.cpp">example1.cpp</a></li>
+            <li><a href="ftp://www.cs.uregina.ca/pub/class/315/WWW/Lab1/GLUT/vshader91.glsl">vshader91.glsl</a></li>
+            <li><a href="ftp://www.cs.uregina.ca/pub/class/315/WWW/Lab1/GLUT/fshader91.glsl">fshader91.glsl</a></li>
+         </ul>
+      </ul>
+   </ul>
+         </li><li><b>Build and Run:</b></li>
+         <ul>
+            <li>You should be ready to go, but you may need to specify some libraries explicitly:</li>
+            <ul>
+               <li>Make sure the project is selected in the Solution Explorer, not a code file, and not the Solution.
+               </li><li>Go to <b>Project-&gt;Properties</b></li>
+               <li>expand <b>Configuration Properties</b></li>
+               <li>expand the <b>Linker</b> folder
+               </li><li>select <b>Input</b></li>
+               <li>add these additional dependencies: opengl32.lib;glu32.lib;freeglut.lib;glew32.lib</li>
+            </ul>
+         </ul>
+         <li><b>64-bit configuration</b> - 64-bit Windows only</li>
+         <ul>
+            <li>64-bit Windows will compile and run a 32-bit project, but if you want to try to do 64-bit OpenGL projects, you only have to do a little extra work:</li>
+            <ul>
+               <li>Go to <b>Project-&gt;Properties</b></li>
+               <li>Click on <b>Configuration Properties</b></li>
+               <li>Click <b>Configuration Manager</b></li>
+               <li>Select <b>New...</b> from <b>Active solution platform:</b></li>
+               <li>Select the new platform <b>x64</b>, and copy settings from Win32
+            </li></ul>
+         </ul>
+      </ul>
+
+
+</body></html>
